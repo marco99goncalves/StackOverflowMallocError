@@ -1,0 +1,9 @@
+#bin/sh
+
+gcc -Wno-deprecated-declarations -o libmemalloc.so -fPIC -shared memalloc.c
+export LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH
+gcc testalloc.c -o testalloc -L. -lmemalloc
+
+
+
+./testalloc $1
